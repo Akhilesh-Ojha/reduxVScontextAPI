@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Users from './components/Users/Users';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  state = {
+    users: [
+      {id: 1 ,name: "Akhil"},
+      {id: 2 ,name: "Agam"},
+      {id: 3 ,name: "Shubham"}
+    ],
+    isAuthenticated: false
+  }
+
+  loginHandler = () => {
+    this.setState({
+      isAuthenticated: true
+    })
+  }
+
+
+  render() {
+    return (
+      <div className="App">
+        <h1>User Application</h1>
+        <button onClick={this.loginHandler}>Login Users</button>
+        <Users users={this.state.users} isAuth={this.state.isAuthenticated} />
+      </div>
+    );
+  }  
 }
 
 export default App;
