@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './User.css';
+import { connect } from 'react-redux';
 
-const user = (props) => {
-    return(
-        <div className="user">
-            <p>{props.name}</p>
-            <p>Authentication Status: {props.isAuthUser.toString().toUpperCase()}</p>
-        </div>
-    ); 
+class User extends Component {
+    render() {
+        return(
+            <div className="user">
+                <p>{this.props.name}</p>
+                <p>Authentication Status: {this.props.auth.toString().toUpperCase()}</p>
+            </div>
+        ); 
+    }
 }
 
-export default user;
+const mapStateToProps = state => {
+    return {
+        auth: state.isAuthenticated
+    }
+}
+
+export default connect(mapStateToProps , null)(User);

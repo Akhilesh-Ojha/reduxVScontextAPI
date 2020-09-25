@@ -6,7 +6,7 @@ const users = (props) => props.users.map((user , index) => {
         <div className="person">
             <User  
                 name={user.name} 
-                isAuthUser={props.isAuth}>
+            >
             </User>
         </div>
    )
